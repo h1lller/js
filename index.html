@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+
+    body {
+      background-color: burlywood;
+    }
+
+    .container {
+      width: 960px;
+      margin: 150px auto;
+      background-color:cadetblue;
+      color: white;
+      padding: 3rem;
+      font-size: 3rem;
+    }
+    .show-more-wrapper {
+      display: inline;
+    }
+
+    .show-more-wrapper span,
+    .less {
+      display: none;
+    }
+
+    #show-more-checkbox:checked ~.show-more-wrapper span {
+      display: inline;
+    }
+
+    #show-more-checkbox:checked ~ label .more {
+      display: none;
+    }
+
+    #show-more-checkbox:checked ~ label .less {
+      display: inline;
+    }
+
+    #show-more-checkbox:checked ~ .show-more-wrapper::after{
+      display: none;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    p {
+
+      display: inline;
+    }
+
+    label {
+      font-weight: 700;
+      color: black;
+    }
+
+    .show-more-wrapper::after {
+      content: '...';
+      color: white;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    input:focus ~ label {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container MoreWidget">
+  <div class="show-more-wrapper">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, laboriosam! Lorem ipsum dolor sit amet
+      consectetur</p>
+    <details>
+      <summary>Read more</summary>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, natus.</p>
+    </details>
+  </div>
+</div>
+
+<script src="main.js"></script>
+
+</body>
+
+</html>

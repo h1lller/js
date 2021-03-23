@@ -6,8 +6,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #000000;
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.5' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+  background-color: #ffffff;
   font-family: 'Roboto Mono', monospace;
   display: grid;
   place-items: center;
@@ -15,84 +14,26 @@ body {
   padding:  0 2rem;
 }
 
-.quote-container {
-  background-color: #fff;
-  max-width: 650px;
-  min-width: 700px;
-  padding: 2rem;
-  min-height: 250px;
+.image-container {
+  width: 700px;
   display: flex;
   flex-direction: column;
-}
-
-.quote-author {
-  margin-top: 1rem;
-  text-align: right;
-  font-size: 1rem;
-}
-
-.quote-buttons {
-  display: flex;
   gap: 2rem;
-  margin-top: auto;
 }
-
-.button {
-  all: unset;
-  cursor: pointer;
-  border: 2px solid black;
-  padding: 0.2em 0.5em;
-  transition: 300ms all linear;
-  color: black;
-}
-
-.button:active, .button:hover {
-  background-color: black;
-  color: white;
-}
-
-.quote-text, .quote-author {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
-
-.quote-author {
-  align-self: flex-end;
-}
-
-.quote-author::after,
-.quote-text::after {
-  content: '';
-  display: none;
-  position: absolute;
-  left: -150px;
-  top: 0;
+.image-container img {
   height: 100%;
-  width: 150px;
-  background: linear-gradient(to right, transparent 0%, #000000 40%, #000000 60%, transparent 100%);
-  animation: load 0.8s cubic-bezier(0.4, 0.0, 0.2, 1) alternate-reverse infinite;
+  object-fit: cover;
+  object-position: center;
 }
 
-.quote-container.is-loading .quote-author::after,
-.quote-container.is-loading .quote-text::after {
-  display: block;
+.loader {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255,255,255, 0.5);
+  position: fixed;
 }
-
-.quote-container.is-loading {
-  color: transparent;
-}
-
-@keyframes load {
-  from {
-    left: -150px;
-  }
-  to   {
-    left: calc(100% + 20px);
-  }
-}
-
-
 
 [hidden] {
   display: none;

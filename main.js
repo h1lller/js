@@ -1,34 +1,21 @@
-function get(object, key, argen) {
-  var value;
-  var stroke = key.split('.');
-  var i = stroke.shift();
-  var newString = stroke.join('.');
+import 'regenerator-runtime/runtime'
 
-  Object.keys(object).some(function (k) {
-    if (object[i] && typeof object[i] === 'object') {
-      value = get(object[i], newString, argen);
-      return true;
+const videoElement = document.createElement('video');
+const domElement = document.querySelector('.zcx');
+const btn = document.querySelector('.btn');
+
+async function getVideo() {
+    const video = await navigator.mediaDevices.getDisplayMedia();
+    videoElement.hidden = true;
+    videoElement.srcObject = video;
+
+    videoElement.onloadedmetadata = async () =>  {
+        domElement.appendChild(videoElement);
+        videoElement.play();
+
+        await videoElement.requestPictureInPicture();
     }
-    else {
-      value = argen ? argen : i ? object[i] : object || undefined;
-      return
-    }
-  });
-  return value;
 }
 
-const obj = {
-  a: {
-    b: {
-      c: 'd'
-    },
-    e: 'f'
-  }
-};
+getVideo()
 
-get(obj, 'a.b');   // { c : 'd' }
-get(obj, 'a.b.c'); // 'd'
-get(obj, 'a.e');   // 'f'
-get(obj, 'a.x.e'); // undefined
-get(obj, 'a.x.e', true); // true
-get(obj, 'a.x.e', 'My default value'); // My default value
